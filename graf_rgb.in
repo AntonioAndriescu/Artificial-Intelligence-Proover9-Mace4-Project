@@ -1,0 +1,122 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(domain_size, 3).
+  assign(start_size, 3).
+  assign(end_size, 3).
+  assign(max_models, -1).
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Additional input for Mace4
+assign(max_models, -1).
+end_if.
+
+formulas(assumptions).
+
+%fiecare nod are cel putin o culoare.
+N1(rosu) | N1(albastru) | N1(galben).
+N2(rosu) | N2(albastru) | N2(galben).
+N3(rosu) | N3(albastru) | N3(galben).
+N4(rosu) | N4(albastru) | N4(galben).
+N5(rosu) | N5(albastru) | N5(galben).
+N6(rosu) | N6(albastru) | N6(galben).
+N7(rosu) | N7(albastru) | N7(galben).
+N8(rosu) | N8(albastru) | N8(galben).
+N9(rosu) | N9(albastru) | N9(galben).
+N10(rosu) | N10(albastru) | N10(galben).
+
+%fiecare nod nu poate avea mai mult de o culoare.
+N1(rosu) <-> -N1(albastru) & -N1(galben).
+N1(albastru) <-> -N1(rosu) & -N1(galben).
+N1(galben) <-> -N1(albastru) & -N1(rosu).
+
+N2(rosu) <-> -N2(albastru) & -N2(galben).
+N2(albastru) <-> -N2(rosu) & -N2(galben).
+N2(galben) <-> -N2(albastru) & -N2(rosu).
+
+N3(rosu) <-> -N3(albastru) & -N3(galben).
+N3(albastru) <-> -N3(rosu) & -N3(galben).
+N3(galben) <-> -N3(albastru) & -N3(rosu).
+
+N4(rosu) <-> -N4(albastru) & -N4(galben).
+N4(albastru) <-> -N4(rosu) & -N4(galben).
+N4(galben) <-> -N4(albastru) & -N4(rosu).
+
+N5(rosu) <-> -N5(albastru) & -N5(galben).
+N5(albastru) <-> -N5(rosu) & -N5(galben).
+N5(galben) <-> -N5(albastru) & -N5(rosu).
+
+N6(rosu) <-> -N6(albastru) & -N6(galben).
+N6(albastru) <-> -N6(rosu) & -N6(galben).
+N6(galben) <-> -N6(albastru) & -N6(rosu).
+
+N7(rosu) <-> -N7(albastru) & -N7(galben).
+N7(albastru) <-> -N7(rosu) & -N7(galben).
+N7(galben) <-> -N7(albastru) & -N7(rosu).
+
+N8(rosu) <-> -N8(albastru) & -N8(galben).
+N8(albastru) <-> -N8(rosu) & -N8(galben).
+N8(galben) <-> -N8(albastru) & -N8(rosu).
+
+N9(rosu) <-> -N9(albastru) & -N9(galben).
+N9(albastru) <-> -N9(rosu) & -N9(galben).
+N9(galben) <-> -N9(albastru) & -N9(rosu).
+
+N10(rosu) <-> -N10(albastru) & -N10(galben).
+N10(albastru) <-> -N10(rosu) & -N10(galben).
+N10(galben) <-> -N10(albastru) & -N10(rosu).
+
+%vecinii nodurilor nu pot avea aceeasi culoare.
+N1(rosu) -> -N2(rosu) & -N6(rosu) & -N5(rosu).
+N1(albastru) -> -N2(albastru) & -N6(albastru) & -N5(albastru).
+N1(galben) -> -N2(galben) & -N6(galben) & -N5(galben).
+
+N2(rosu) -> -N1(rosu) & -N3(rosu) & -N7(rosu).
+N2(albastru) -> -N1(albastru) & -N3(albastru) & -N7(albastru).
+N2(galben) -> -N1(galben) & -N3(galben) & -N7(galben).
+
+N3(rosu) -> -N2(rosu) & -N4(rosu) & -N8(rosu).
+N3(albastru) -> -N2(albastru) & -N4(albastru) & -N8(albastru).
+N3(galben) -> -N2(galben) & -N4(galben) & -N8(galben).
+
+N4(rosu) -> -N3(rosu) & -N5(rosu) & -N9(rosu).
+N4(albastru) -> -N3(albastru) & -N5(albastru) & -N9(albastru).
+N4(galben) -> -N3(galben) & -N5(galben) & -N9(galben).
+
+N5(rosu) -> -N4(rosu) & -N1(rosu) & -N10(rosu).
+N5(albastru) -> -N4(albastru) & -N1(albastru) & -N10(albastru).
+N5(galben) -> -N4(galben) & -N1(galben) & -N10(galben).
+
+N6(rosu) -> -N1(rosu) & -N8(rosu) & -N9(rosu).
+N6(albastru) -> -N1(albastru) & -N8(albastru) & -N9(albastru).
+N6(galben) -> -N1(galben) & -N8(galben) & -N9(galben).
+
+N7(rosu) -> -N2(rosu) & -N9(rosu) & -N10(rosu).
+N7(albastru) -> -N2(albastru) & -N9(albastru) & -N10(albastru).
+N7(galben) -> -N2(galben) & -N9(galben) & -N10(galben).
+
+N8(rosu) -> -N3(rosu) & -N6(rosu) & -N10(rosu).
+N8(albastru) -> -N3(albastru) & -N6(albastru) & -N10(albastru).
+N8(galben) -> -N3(galben) & -N6(galben) & -N10(galben).
+
+N9(rosu) -> -N4(rosu) & -N6(rosu) & -N7(rosu).
+N9(albastru) -> -N4(albastru) & -N6(albastru) & -N7(albastru).
+N9(galben) -> -N4(galben) & -N6(galben) & -N7(galben).
+
+N10(rosu) -> -N7(rosu) & -N8(rosu) & -N5(rosu).
+N10(albastru) -> -N7(albastru) & -N8(albastru) & -N5(albastru).
+N10(galben) -> -N7(galben) & -N8(galben) & -N5(galben).
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+

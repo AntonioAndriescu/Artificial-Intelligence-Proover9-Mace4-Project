@@ -1,0 +1,95 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(domain_size, 3).
+  assign(start_size, 3).
+  assign(end_size, 3).
+  assign(max_models, -1).
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Additional input for Mace4
+assign(max_models, -1).
+
+   % Additional input for Mace4
+assign(max_models, -1).
+end_if.
+
+formulas(assumptions).
+
+%B = Boris.
+%D = Dorothy.
+%H = Human.
+%V = Vampire.
+%S = Sane.
+%I = Insane.
+%exemplu: BHI = Boris Human Insane(adica Boris este human si este insane)
+
+BHS | BHI | BVS | BVI.
+DHS | DHI | DVS | DVI.
+
+BHS -> -BHI & -BVS & -BVI.
+BHI -> -BHS & -BVS & -BVI.
+BVS -> -BHI & -BHS & -BVI.
+BVI -> -BHI & -BVS & -BHS.
+
+DHS -> -DHI & -DVS & -DVI.
+DHI -> -DHS & -DVS & -DVI.
+DVS -> -DHI & -DHS & -DVI.
+DVI -> -DHI & -DVS & -DHS.
+
+BH | BV.
+DH | DV.
+BS | BI.
+DS | DI.
+
+BH <-> DH.
+BV <-> DV.
+
+BH -> BHS | BHI.
+BV -> BVS | BVI.
+
+DH -> DHS | DHI.
+DV -> DVS | DVI.
+
+BS -> BHS | BVS.
+BI -> BHI | BVI.
+
+DS -> DHS | DVS.
+DI -> DHI | DVI.
+
+BH & BS -> BHS.
+BH & BI -> BHI.
+BV & BS -> BVS.
+BV & BI -> BVI.
+
+DH & DS -> DHS.
+DH & DI -> DHI.
+DV & DS -> DVS.
+DV & DI -> DVI.
+
+BHS | BVI -> B1.
+BHI | BVS -> -B1.
+
+BHS | BVI -> B2.
+BHI | BVS -> -B2.
+
+DHS | DVI -> D1.
+DHI | DVS -> -D1.
+
+B1 <-> BV & DV.
+D1 <-> B1.
+B2 <-> (BS & DS) | (BI & DI).
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+

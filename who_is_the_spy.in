@@ -1,0 +1,63 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(domain_size, 3).
+  assign(start_size, 3).
+  assign(end_size, 3).
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Additional input for Mace4
+assign(max_models, -1).
+end_if.
+
+formulas(assumptions).
+
+%K = Knight.
+%KN = Knave.
+%S = Spy.
+
+AK | AKN | AS.
+BK | BKN | BS.
+CK | CKN | CS.
+
+AK -> -BK & -CK.
+BK -> -AK & -CK.
+CK -> -BK & -AK.
+
+AKN -> -BKN & -CKN.
+BKN -> -AKN & -CKN.
+CKN -> -BKN & -AKN.
+
+AS -> -BS & -CS.
+BS -> -AS & -CS.
+CS -> -BS & -AS.
+
+AK -> A.
+AKN -> -A.
+AS -> A | -A.
+
+BK -> B.
+BKN -> -B.
+BS -> B | -B.
+
+CK -> C.
+CKN -> -C.
+CS -> C | -C.
+
+A <-> CKN | CS.
+B <-> AK | AKN | AS.
+C <-> BK | BKN | BS.
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+
